@@ -134,7 +134,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 md:p-24 text-black">
-      <h1 className="text-3xl font-bold mb-6 tracking-tight">Quote Builder Change 1</h1>
+      <h1 className="text-3xl font-bold mb-6 tracking-tight">Quote Builder</h1>
       {/* LEFT COLUMN: Stacks items vertically */}
 
       {/* Stone Depot Branch */}
