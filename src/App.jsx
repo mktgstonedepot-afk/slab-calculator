@@ -88,7 +88,7 @@ function App() {
   const totalUnits = totalSlabCount; // Used for footer display
 
   const calculatedDeliveryFee = numDistance <= 13 ? numDistance * 130 : numDistance * 70;
-  const calculatedHaulingFee = (numFloors-1) * totalSlabCount * 500;
+  const calculatedHaulingFee = numFloors > 0 ? (numFloors-1) * totalSlabCount * 500 : 0;
 
   
   // Build Slab Rows
