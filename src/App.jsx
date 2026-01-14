@@ -5,8 +5,13 @@ import DataTable from "./components/Table";
 import DeliveryCard from "./components/Delivery-Card";
 import RadioGroup from "./components/Radio-Group";
 import { BRAND_PRICE } from "./prices";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 function App() {
+
+  
+
   const [cards, setCards] = useState([]);
   const [activeId, setActiveId] = useState(null);
   const [slabData, setSlabData] = useState({});
@@ -85,6 +90,7 @@ function App() {
   const calculatedDeliveryFee = numDistance <= 13 ? numDistance * 130 : numDistance * 70;
   const calculatedHaulingFee = (numFloors-1) * totalSlabCount * 500;
 
+  
   // Build Slab Rows
   const slabRows = Object.entries(slabData).map(([id, slab]) => {
     const qty = Number(slab.number) || 0;
@@ -131,6 +137,50 @@ function App() {
     { title: 'Units', key: 'units', flex: 1 },
     { title: 'Costs', key: 'costs', flex: 1 },
   ];
+
+  const handleDownloadPDF = () => {
+    const doc = new jsPDF()
+    const title = "Stone Depot Quote Summary"
+    const padding = 20
+    const titleWidth = doc.getTextWidth(title)
+    const center = (doc.internal.pageSize.width / 2) - (titleWidth/2)
+    doc.text(title,center,padding)
+    
+    doc.setFontSize(12)
+    const branchName = String(currentBranch || "Laguna").toUpperCase();
+    doc.text(`Branch: ${branchName}`, 14, 32);
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 40);
+
+    autoTable(doc, {
+  startY: 50,
+  head: [['Item Description', 'Units', 'Cost']],
+  body: [
+    ...finalTableData.map((val) => [
+      String(val?.name || "N/A"),
+      String(val?.units || "0"),
+      String(val?.costs || "0")
+    ]),
+    // Add the Total Row here
+    [
+      { 
+        content: 'GRAND TOTAL', 
+        colSpan: 2, 
+        styles: { halign: 'right', fontStyle: 'bold' } 
+      }, 
+      { 
+        content: `Php ${grandTotal.toLocaleString()}`, 
+        styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } 
+      }
+    ]
+  ],
+  theme: 'grid',
+  });
+
+    const fileName = `Quote_${branchName}_${new Date().toLocaleDateString()}.pdf`
+    doc.save(fileName)
+ 
+  };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 md:p-24 text-black">
@@ -218,7 +268,15 @@ function App() {
                 costs: `Php ${grandTotal.toLocaleString()}`
               }} 
             />
+            <button 
+            onClick={handleDownloadPDF}
+            disabled={cards.length === 0} // Only allow download if there's data
+            className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            Download Quote (PDF)
+        </button>
           </div>
+          
         </div>
       </div>
     </div>
