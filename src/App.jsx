@@ -83,7 +83,7 @@ function App() {
   const totalUnits = totalSlabCount; // Used for footer display
 
   const calculatedDeliveryFee = numDistance <= 13 ? numDistance * 130 : numDistance * 70;
-  const calculatedHaulingFee = numFloors * totalSlabCount * 500;
+  const calculatedHaulingFee = (numFloors-1) * totalSlabCount * 500;
 
   // Build Slab Rows
   const slabRows = Object.entries(slabData).map(([id, slab]) => {
@@ -179,7 +179,7 @@ function App() {
         <div className="flex-1 flex flex-col gap-8">
 
           <div className="pt-8 border-t border-gray-200">
-            <p className="text-xl text-gray-700 font-bold uppercase tracking-wider mb-2">Delivery Fee</p>
+            <p className="text-xl text-gray-700 font-bold uppercase tracking-wider mb-2">Distance (Delivery Fee)</p>
             <p className="text-sm text-gray-500 mb-4">Find the distance to the nearest Stone Depot branch. Go to Google and type 'Your location to Stone Depot'. </p>
             <div className="max-w-sm">
               <DeliveryCard 
@@ -191,7 +191,7 @@ function App() {
 
           
           <div className="pt-8 border-t border-gray-200">
-            <p className="text-xl text-gray-700 font-bold uppercase tracking-wider">Hauling Fee</p>
+            <p className="text-xl text-gray-700 font-bold uppercase tracking-wider">Number of Floors (Hauling Fee)</p>
             <p className="text-sm text-gray-500 mb-4">A service fee for manual hauling of slabs to the designated floor number. </p>
             <div className="max-w-sm">
               <DeliveryCard 

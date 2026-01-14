@@ -6,8 +6,10 @@ export const BRANCH_INVENTORY = {
     Marble: []
   },
   cebu: {
-    Quartz: ["cloudstone", "nimbus", "royalCalacatta"],
-    Granite: ["blackGalaxy", "bluePearl", "tanBrown"],
+    Quartz: ["blackSapphire", "cirrusCalacatta", "graySapphire", "moonstone", "neroCalacatta", "nimbus", "riverGold", "royalCalacatta", "whiteSapphire"],
+    Granite: ["absoluteBlack", "babyPink", "balticBrown", "beigePorrino", "blackForrest", "blackGalaxy", "blackImpala", "bluePearl", "caeserWhite", "chesnutBrown", "emeraldPearl", "grayHonda", "hassanGreen", "imperialRed", "multicolorRed", "paradisoLight", "pinkPorrino", "riverWhite", "saltAndPepper", "tanBrown", "tigerOrange"],
+    Marble: ["neroMarquina", "volakasWhite"],
+    OtherStones: ["adenWhite", "autumnLeaf", "cappucinoTerra", "pearlWhite", "springWhite"] 
     // Cebu might not have any Marble, so we just leave it out
   },
   davao: {

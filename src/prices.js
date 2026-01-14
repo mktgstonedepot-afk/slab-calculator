@@ -25,10 +25,41 @@ export const BRAND_PRICE = {
     aetherstorm: 7500
   },
   cebu: {
-    absoluteBlack: 5170, // 4700 * 1.1
-    granite: 77,
-    onyx: 110,
-    quartz: 88
+    absoluteBlack: 4000, // 4700 * 1.1
+    babyPink: 2600,
+    balticBrown: 2800,
+    blackForrest: 3600,
+    blackGalaxy: 3500,
+    blackImpala: 2400,
+    bluePearl: 8000,
+    caeserWhite: 2300,
+    chesnutBrown: 2500,
+    emeraldPearl: 8000,
+    grayHonda: 3200,
+    imperialRed: 3400,
+    multicolorRed: 3400,
+    paradisoLight: 2700,
+    pinkPorrino: 1800,
+    saltAndPepper: 2100,
+    tanBrown: 3500,
+    tigerOrange: 1900,
+    blackSapphire: 5000,
+    cirrusCalacatta: 8000,
+    graySapphire: 5000,
+    moonstone: 5300,
+    neroCalacatta: 8000,
+    nimbus: 5000,
+    riverGold: 9000,
+    royalCalacatta: 9000,
+    whiteSapphire: 5000,
+    neroMarquina: 6500,
+    volakasWhite: 8000,
+    adenWhite: 2300,
+    autumnLeaf: 2400,
+    cappucinoTerra: 2300,
+    pearlWhite: 2500,
+    springWhite: 2400
+
   },
   davao: {
     absoluteBlack: 4200,
